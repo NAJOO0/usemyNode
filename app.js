@@ -18,6 +18,13 @@ const { executionAsyncId } = require("async_hooks");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+db.execute("SELECT * FROM products")
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
